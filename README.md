@@ -7,6 +7,14 @@
 
 ## Course
 
+### Install CLI
+
+#### Mac
+
+```
+brew install rancher-cli
+```
+
 ## Thank you & Questions
 
 ### Ondrej Sika
