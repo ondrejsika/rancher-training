@@ -5,6 +5,12 @@
     Ondrej Sika <ondrej@ondrejsika.com>
     https://github.com/ondrejsika/rancher-training
 
+## About Course
+
+- [Rancher training in Czech Republic](https://ondrej-sika.cz/skoleni/rancher)
+- [Rancher training in Europe](https://ondrej-sika.com/training/rancher)
+
+
 ## Course
 
 ### Install CLI
