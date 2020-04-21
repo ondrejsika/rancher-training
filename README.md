@@ -13,11 +13,12 @@
 
 ## Course
 
-### Install CLI
+### Install RKE and Rancher CLI
 
 #### Mac
 
 ```
+brew install rke
 brew install rancher-cli
 ```
 
