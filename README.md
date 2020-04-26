@@ -103,6 +103,16 @@ ros os upgrade
 
 ## Rancher
 
+## Global Configuration
+
+Apply global configuration from Terraform
+
+```
+cd terraform/global
+terraform init
+terraform apply -auto-approve
+```
+
 ### Rancher Drivers
 
 Rancher has two types of drivers: __Cluster Drivers__ and __Node Drivers__
