@@ -215,6 +215,20 @@ Projects are logical entity inside cluster wich contains namespaces. You can ass
 
 Namespaces are standart Kubernetes Namespaces.
 
+## Alerting
+
+### Notifiers
+
+Notifiers are backend for alerting. Supports email, Slack, PagerDuty, ...
+
+### Alert Groups
+
+Alert Groups are collections of Alert Rules poited on one or many Notifiers(backends).
+
+### Alert Rules
+
+Alert Rule is a rule which trigger alert.
+
 
 ## Thank you & Questions
 
