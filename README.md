@@ -19,8 +19,11 @@
   - Rancher OS
   - RKE
   - Rancher
+- Rancher & Terraform
 - Rancher OS
 - Rancher
+  - Install Rancher
+  - Bootstrap Rancher
   - Setup
     - Cloud Credentials
     - Node Templates
