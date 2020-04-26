@@ -36,6 +36,68 @@
   - Update Cluster
 
 
+## Racher OS
+
+### Create Demo Rancher OS VM
+
+Create VM
+
+```
+cd terraform/rancheros
+terraform apply -auto-approve
+```
+
+SSH into
+
+```
+ssh rancher@$(terraform output ros_ip)
+```
+
+### `ros` command
+
+You have to be root to manage RancherOS
+
+```
+sudo su
+ros
+```
+
+#### Console
+
+```
+ros console list
+```
+
+```
+ros console enable debian
+ros console list
+```
+
+```
+ros console switch -f debian
+```
+
+SSH to RancherOS again:
+
+```
+ssh rancher@$(terraform output ros_ip)
+apt
+sudo su
+ros console list
+```
+
+#### Engine
+
+```
+ros engine --help
+```
+
+#### Upgrade Rancher OS
+
+```
+ros os upgrade
+```
+
 ## Thank you & Questions
 
 ### Ondrej Sika
