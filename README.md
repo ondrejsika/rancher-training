@@ -13,6 +13,29 @@
 
 ## Course
 
+## Agenda
+
+- Rancher Ecosystem
+  - Rancher OS
+  - RKE
+  - Rancher
+- Rancher OS
+- Rancher
+  - Setup
+    - Cloud Credentials
+    - Node Templates
+    - Users
+  - Clusters
+    - Rancher Managed Cluster on Managed Nodes
+    - Rancher Managed Cluster on Existing Nodes
+    - Imported Cluster
+  - Access Control
+  - Rancher CLI
+- RKE
+  - Create Cluster
+  - Update Cluster
+
+
 ## Thank you & Questions
 
 ### Ondrej Sika
