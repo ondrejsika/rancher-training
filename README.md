@@ -113,6 +113,10 @@ __Node Drivers__ creates only nodes on cloud platform and use RKE for setup own 
 
 Catalogs are helm repositories for app deployments
 
+### RKE Templates
+
+RKE Templates are RKE Configs for new Kubernetes clusters. If you want to have all clusters created with specific parameters, for example without nginx ingress, you can create template to do that.
+
 
 ## Thank you & Questions
 
