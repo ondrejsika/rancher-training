@@ -128,6 +128,61 @@ If you want to use clouds for managed clusters or node, you have to setup cloud 
 
 Before you can create cluster using cloud node drivers, you have to create node template. This node template use credentials stored in Cloud Credentials and specify node parameters like image, size, region, ...
 
+## Clusters
+
+### Rancher Managed Cluster on Managed Nodes
+
+```
+cd terraform/cluster-rancheros
+terraform init
+terraform apply -auto-approve
+```
+
+### Rancher Managed Cluster on Existing Nodes
+
+```
+cd terraform/do-nodes
+terraform init
+terraform apply -auto-approve
+```
+
+1. Create cluster manually
+2. SSH to nodes and run:
+
+```
+SERVER=<server>
+TOKEN=<token>
+sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.4.2 --server $SERVER --token $TOKEN --etcd --controlplane --worker
+```
+
+3. That's it.
+
+### Imported Cluster
+
+Create Imported Cluster
+
+```
+cd terraform/cluster-imported
+terraform init
+terraform apply -auto-approve
+```
+
+Create Cluster on Digital Ocean
+
+```
+cd terraform/do-kubernetes
+terraform init
+terraform apply -auto-approve
+```
+
+Get agent token and apply using `kubectl.sh`, which connect cluster created by Terraform
+
+```
+SERVER=<server>
+TOKEN=<token>
+./kubectl.sh apply -f https://$SERVER/v3/import/$TOKEN.yaml
+```
+
 ## Thank you & Questions
 
 ### Ondrej Sika
