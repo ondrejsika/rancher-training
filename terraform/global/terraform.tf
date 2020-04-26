@@ -48,6 +48,19 @@ resource "rancher2_node_template" "do-ros" {
 
 # === Users ===
 
+resource "rancher2_user" "root" {
+  name = "Root User"
+  username = "root"
+  password = "root"
+  enabled = true
+}
+
+resource "rancher2_global_role_binding" "root" {
+  name = "root"
+  global_role_id = "admin"
+  user_id = rancher2_user.root.id
+}
+
 resource "rancher2_user" "foo" {
   name = "Foo User"
   username = "foo"
