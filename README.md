@@ -120,6 +120,13 @@ Catalogs are helm repositories for app deployments
 
 RKE Templates are RKE Configs for new Kubernetes clusters. If you want to have all clusters created with specific parameters, for example without nginx ingress, you can create template to do that.
 
+### Cloud Credentials
+
+If you want to use clouds for managed clusters or node, you have to setup cloud credentials which will be used for connection to cloud.
+
+### Node Templates
+
+Before you can create cluster using cloud node drivers, you have to create node template. This node template use credentials stored in Cloud Credentials and specify node parameters like image, size, region, ...
 
 ## Thank you & Questions
 
