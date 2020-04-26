@@ -109,6 +109,11 @@ __Cluster Drivers__ creates Kubernetes using RKE or cloud provides (eg.: Amazon 
 __Node Drivers__ creates only nodes on cloud platform and use RKE for setup own Kubernetes cluster on them
 
 
+### Catalogs
+
+Catalogs are helm repositories for app deployments
+
+
 ## Thank you & Questions
 
 ### Ondrej Sika

@@ -98,3 +98,10 @@ resource "rancher2_cluster_template" "default" {
     default = true
   }
 }
+
+# === Catalogs ===
+
+resource "rancher2_catalog" "ondrejsika" {
+  name = "ondrejsika"
+  url = "https://helm.oxs.cz"
+}
