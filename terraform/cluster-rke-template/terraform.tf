@@ -1,5 +1,7 @@
 variable "rancher_api_url" {}
 variable "rancher_token_key" {}
+variable "slack_channel" {}
+variable "slack_hook_url" {}
 
 provider "rancher2" {
   api_url = var.rancher_api_url
@@ -111,4 +113,17 @@ resource "rancher2_project_role_template_binding" "bar" {
   project_id = rancher2_project.proj1.id
   role_template_id = "project-member"
   user_id = data.rancher2_user.bar.id
+}
+
+# === Notifiers ===
+
+resource "rancher2_notifier" "slack" {
+  name = "slack"
+  cluster_id = rancher2_cluster.ros-template.id
+  send_resolved = "true"
+
+  slack_config {
+    default_recipient = var.slack_channel
+    url = var.slack_hook_url
+  }
 }
