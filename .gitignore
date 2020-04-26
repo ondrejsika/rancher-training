@@ -6,3 +6,6 @@
 *.tfvars
 *.tfplan
 !*.example.tfvars
+
+# Kubernetes
+kubeconfig
