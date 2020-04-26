@@ -209,6 +209,13 @@ TOKEN=<token>
 ./kubectl.sh apply -f https://$SERVER/v3/import/$TOKEN.yaml
 ```
 
+## Projects & Namespace
+
+Projects are logical entity inside cluster wich contains namespaces. You can assign users to specific project.
+
+Namespaces are standart Kubernetes Namespaces.
+
+
 ## Thank you & Questions
 
 ### Ondrej Sika
