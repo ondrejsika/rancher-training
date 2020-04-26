@@ -103,6 +103,22 @@ ros os upgrade
 
 ## Rancher
 
+## Install Rancher
+
+```
+cd terraform/rancher
+terraform init
+terraform apply -auto-approve
+```
+
+## Bootstrap Rancher
+
+```
+cd terraform/bootstrap
+terraform init
+terraform apply -auto-approve
+```
+
 ## Global Configuration
 
 Apply global configuration from Terraform
