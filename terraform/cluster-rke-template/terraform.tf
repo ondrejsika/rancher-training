@@ -127,3 +127,46 @@ resource "rancher2_notifier" "slack" {
     url = var.slack_hook_url
   }
 }
+
+# === Alerting ===
+
+# --- Groups ---
+
+resource "rancher2_cluster_alert_group" "custom" {
+  cluster_id = rancher2_cluster.ros-template.id
+  name = "custom"
+  group_interval_seconds = 300
+  repeat_interval_seconds = 3600
+
+  recipients {
+    notifier_id = rancher2_notifier.slack.id
+  }
+}
+
+# --- Rules ---
+
+resource "rancher2_cluster_alert_rule" "deployment" {
+  cluster_id = rancher2_cluster.ros-template.id
+  group_id = rancher2_cluster_alert_group.custom.id
+  name = "Deployment"
+  group_interval_seconds = 600
+  repeat_interval_seconds = 6000
+
+  event_rule {
+    resource_kind = "Deployment"
+    event_type = "Warning"
+  }
+}
+
+resource "rancher2_cluster_alert_rule" "pod" {
+  cluster_id = rancher2_cluster.ros-template.id
+  group_id = rancher2_cluster_alert_group.custom.id
+  name = "Pod"
+  group_interval_seconds = 600
+  repeat_interval_seconds = 6000
+
+  event_rule {
+    resource_kind = "Pod"
+    event_type = "Warning"
+  }
+}
