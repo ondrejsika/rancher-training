@@ -31,3 +31,84 @@ resource "rancher2_node_pool" "ros-template" {
   etcd = true
   worker = true
 }
+
+data "rancher2_user" "foo" {
+    username = "foo"
+}
+
+resource "rancher2_cluster_role_template_binding" "foo" {
+  name = "foo"
+  cluster_id = rancher2_cluster.ros-template.id
+  role_template_id = "cluster-admin"
+  user_id = data.rancher2_user.foo.id
+}
+
+resource "rancher2_project" "proj1" {
+  name = "proj1"
+  cluster_id = rancher2_cluster.ros-template.id
+  resource_quota {
+    project_limit {
+      limits_cpu = "2000m"
+      limits_memory = "2000Mi"
+      requests_storage = "2Gi"
+    }
+    namespace_default_limit {
+      limits_cpu = "2000m"
+      limits_memory = "500Mi"
+      requests_storage = "1Gi"
+    }
+  }
+  container_resource_limit {
+    limits_cpu = "20m"
+    limits_memory = "20Mi"
+    requests_cpu = "1m"
+    requests_memory = "1Mi"
+  }
+}
+
+resource "rancher2_namespace" "proj1-prod" {
+  name = "${rancher2_project.proj1.name}-prod"
+  project_id = rancher2_project.proj1.id
+  resource_quota {
+    limit {
+      limits_cpu = "100m"
+      limits_memory = "100Mi"
+      requests_storage = "1Gi"
+    }
+  }
+  container_resource_limit {
+    limits_cpu = "20m"
+    limits_memory = "20Mi"
+    requests_cpu = "1m"
+    requests_memory = "1Mi"
+  }
+}
+
+resource "rancher2_namespace" "proj1-dev" {
+  name = "${rancher2_project.proj1.name}-dev"
+  project_id = rancher2_project.proj1.id
+  resource_quota {
+    limit {
+      limits_cpu = "50m"
+      limits_memory = "50Mi"
+      requests_storage = "1Gi"
+    }
+  }
+  container_resource_limit {
+    limits_cpu = "20m"
+    limits_memory = "20Mi"
+    requests_cpu = "1m"
+    requests_memory = "1Mi"
+  }
+}
+
+data "rancher2_user" "bar" {
+    username = "bar"
+}
+
+resource "rancher2_project_role_template_binding" "bar" {
+  name = "foo"
+  project_id = rancher2_project.proj1.id
+  role_template_id = "project-member"
+  user_id = data.rancher2_user.bar.id
+}
