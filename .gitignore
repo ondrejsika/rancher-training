@@ -5,3 +5,4 @@
 *.tfstate*
 *.tfvars
 *.tfplan
+!*.example.tfvars
