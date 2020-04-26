@@ -73,3 +73,28 @@ resource "rancher2_global_role_binding" "bar" {
   global_role_id = "user"
   user_id = rancher2_user.bar.id
 }
+
+# === Cluster Templates ===
+
+resource "rancher2_cluster_template" "default" {
+  name = "default"
+  description = "Default template without ingress"
+  // members {
+  //   access_type = "owner"
+  //   user_principal_id = "local://user-XXXXX"
+  // }
+  template_revisions {
+    name = "v1"
+    cluster_config {
+      rke_config {
+        network {
+          plugin = "canal"
+        }
+        ingress {
+          provider = "none"
+        }
+      }
+    }
+    default = true
+  }
+}
