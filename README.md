@@ -342,6 +342,9 @@ rke up
 
 That's it. Do you have any questions? __Let's go for a beer!__
 
+## Useful links
+ - Article (Czech) [Ceph Persistent volumes v Kubernetes pomocí Rook](https://ondrej-sika.cz/blog/ceph-persistent-volumes-v-kubernetes-pomoci-rook/)
+
 ### Ondrej Sika
 
 - email: <ondrej@sika.io>
