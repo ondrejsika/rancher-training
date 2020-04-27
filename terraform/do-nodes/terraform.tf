@@ -9,7 +9,7 @@ variable "node_image" {
 }
 
 variable "ssh_key_name" {
-  default = "ondrejsika"
+  default = "default"
 }
 
 provider "digitalocean" {
