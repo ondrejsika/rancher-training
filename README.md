@@ -47,6 +47,7 @@ Create VM
 
 ```
 cd terraform/rancheros
+terraform init
 terraform apply -auto-approve
 ```
 
