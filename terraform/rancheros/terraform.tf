@@ -1,7 +1,7 @@
 variable "do_token" {}
 
 variable "ssh_key_name" {
-  default = "ondrejsika"
+  default = "default"
 }
 
 provider "digitalocean" {
