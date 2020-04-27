@@ -229,6 +229,100 @@ Alert Groups are collections of Alert Rules poited on one or many Notifiers(back
 
 Alert Rule is a rule which trigger alert.
 
+## Rancher CLI
+
+### Login
+
+```
+rancher login <rancher_url> --name demo --token <token>
+```
+
+### List Servers
+
+```
+rancher server ls
+rancher server current
+```
+
+### Switch Server
+
+```
+rancher server switch
+```
+
+### List Clusters
+
+```
+rancher clusters
+```
+
+### Get `kubeconfig`
+
+```
+rancher clusters kubeconfig <cluster_id>
+rancher clusters kf <cluster_id>
+```
+
+### Current (Project) Context
+
+```
+rancher context current
+```
+
+### Switch Context
+
+```
+rancher context switch
+```
+
+### Racher `kubectl`
+
+Use cluster from current context
+
+```
+rancher kubectl
+
+rancher kubectl get no
+rancher kubectl get po -A
+```
+
+### List Namespaces for Current Cluster
+
+```
+rancher nodes
+```
+
+### SSH to node
+
+```
+rancher ssh <node_id/node_name>
+```
+
+### List Projects for Current Cluster
+
+```
+rancher projects
+```
+
+### New Project
+
+```
+rancher projects new <name>
+```
+
+### List Namespaces for Current Project
+
+```
+rancher namespace
+```
+
+### Create Namespace
+
+```
+rancher namespace new <project_name>-<suffix>
+```
+
+
 ## RKE
 
 You can provision cluster without Rancher just using RKE tool.
