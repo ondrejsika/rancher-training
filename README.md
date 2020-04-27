@@ -229,6 +229,19 @@ Alert Groups are collections of Alert Rules poited on one or many Notifiers(back
 
 Alert Rule is a rule which trigger alert.
 
+## RKE
+
+You can provision cluster without Rancher just using RKE tool.
+
+```
+cd rke
+terraform init
+terraform apply -auto-approve
+cp cluster.example.yml cluster.yml
+./set-ips.sh
+rke up
+./kubectl.sh get no
+```
 
 ## Thank you & Questions
 
