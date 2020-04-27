@@ -340,7 +340,10 @@ rke up
 ## Thank you & Questions
 
 ## Useful links
- - Article (Czech) [Ceph Persistent volumes v Kubernetes pomocí Rook](https://ondrej-sika.cz/blog/ceph-persistent-volumes-v-kubernetes-pomoci-rook/)
+ - Article (Czech): [Ceph Persistent volumes v Kubernetes pomocí Rook](https://ondrej-sika.cz/blog/ceph-persistent-volumes-v-kubernetes-pomoci-rook/)
+ - [Terraform Docs](https://www.terraform.io/docs/)
+ - [Terraform Rancher2 provider docs](https://www.terraform.io/docs/providers/rancher2/)
+ - [Terraform Digital Ocean provider docs](https://www.terraform.io/docs/providers/do/)
 
 ### Ondrej Sika
 
