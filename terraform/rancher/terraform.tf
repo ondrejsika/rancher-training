@@ -45,7 +45,7 @@ resource "null_resource" "cluster" {
     inline = [
       "sleep 60",
       "docker pull -q rancher/rancher:latest",
-      "docker run --name rancher -d --restart=always -p 80:80 -p 443:443 rancher/rancher:latest --acme-domain ${digitalocean_record.rancher.fqdn}",
+      "docker run --privileged --name rancher -d --restart=always -p 80:80 -p 443:443 rancher/rancher:latest --acme-domain ${digitalocean_record.rancher.fqdn}",
     ]
   }
 }
