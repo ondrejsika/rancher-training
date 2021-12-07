@@ -14,7 +14,7 @@ data "digitalocean_domain" "default" {
 }
 
 resource "digitalocean_droplet" "rancher" {
-  image    = "rancheros"
+  image    = "docker-20-04"
   name     = "rancher"
   region   = "fra1"
   size     = "s-4vcpu-8gb"

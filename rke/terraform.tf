@@ -5,7 +5,7 @@ variable "node_count" {
 }
 
 variable "node_image" {
-  default = "rancheros"
+  default = "docker-20-04"
 }
 
 variable "ssh_key_name" {
