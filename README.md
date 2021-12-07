@@ -36,6 +36,16 @@
   - Create Cluster
   - Update Cluster
 
+## Prepare DigitalOcean Account
+
+Add SSH key & base domain
+
+```
+cd terraform/core
+terraform init
+terraform apply -auto-approve
+```
+
 ## Rancher
 
 ## Install Rancher
