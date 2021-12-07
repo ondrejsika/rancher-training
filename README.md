@@ -16,11 +16,9 @@
 ## Agenda
 
 - Rancher Ecosystem
-  - Rancher OS
   - RKE
   - Rancher
 - Rancher & Terraform
-- Rancher OS
 - Rancher
   - Install Rancher
   - Bootstrap Rancher
@@ -37,70 +35,6 @@
 - RKE
   - Create Cluster
   - Update Cluster
-
-
-## Racher OS
-
-### Create Demo Rancher OS VM
-
-Create VM
-
-```
-cd terraform/rancheros
-terraform init
-terraform apply -auto-approve
-```
-
-SSH into
-
-```
-ssh rancher@$(terraform output ros_ip)
-```
-
-### `ros` command
-
-You have to be root to manage RancherOS
-
-```
-sudo su
-ros
-```
-
-#### Console
-
-```
-ros console list
-```
-
-```
-ros console enable debian
-ros console list
-```
-
-```
-ros console switch -f debian
-```
-
-SSH to RancherOS again:
-
-```
-ssh rancher@$(terraform output ros_ip)
-apt
-sudo su
-ros console list
-```
-
-#### Engine
-
-```
-ros engine --help
-```
-
-#### Upgrade Rancher OS
-
-```
-ros os upgrade
-```
 
 ## Rancher
 
@@ -160,7 +94,7 @@ Before you can create cluster using cloud node drivers, you have to create node 
 ### Rancher Managed Cluster on Managed Nodes
 
 ```
-cd terraform/cluster-rancheros
+cd terraform/cluster-debian
 terraform init
 terraform apply -auto-approve
 ```
