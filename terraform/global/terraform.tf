@@ -102,7 +102,7 @@ resource "rancher2_cluster_template" "default" {
 
 # === Catalogs ===
 
-resource "rancher2_catalog" "ondrejsika" {
-  name = "ondrejsika"
-  url = "https://helm.oxs.cz"
+resource "rancher2_catalog" "sikalabs" {
+  name = "sikalabs"
+  url = "https://helm.sikalabs.io"
 }
