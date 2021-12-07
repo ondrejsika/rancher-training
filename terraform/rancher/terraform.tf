@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = "2.16.0"
+    }
+  }
+}
+
 variable "do_token" {}
 variable "base_domain" {}
 
@@ -14,7 +23,7 @@ data "digitalocean_domain" "default" {
 }
 
 resource "digitalocean_droplet" "rancher" {
-  image    = "docker-20-04"
+  image    = "rancheros"
   name     = "rancher"
   region   = "fra1"
   size     = "s-4vcpu-8gb"
@@ -45,6 +54,7 @@ resource "null_resource" "cluster" {
     inline = [
       "sleep 60",
       "docker pull -q rancher/rancher:latest",
+      // -e CATTLE_BOOTSTRAP_PASSWORD=bootstrap
       "docker run --privileged --name rancher -d --restart=always -p 80:80 -p 443:443 rancher/rancher:latest --acme-domain ${digitalocean_record.rancher.fqdn}",
     ]
   }

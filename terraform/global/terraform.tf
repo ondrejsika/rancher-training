@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = "2.16.0"
+    }
+    rancher2 = {
+      source = "rancher/rancher2"
+      version = "1.21.0"
+    }
+  }
+}
+
 variable "do_token" {}
 variable "rancher_api_url" {}
 variable "rancher_token_key" {}

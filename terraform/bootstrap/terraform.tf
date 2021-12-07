@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    rancher2 = {
+      source = "rancher/rancher2"
+      version = "1.21.0"
+    }
+  }
+}
+
 variable "rancher_api_url" {}
 
 provider "rancher2" {
@@ -10,6 +19,7 @@ provider "rancher2" {
 resource "rancher2_bootstrap" "admin" {
   provider = rancher2.bootstrap
 
+  initial_password = "bootstrap"
   password = "asdfasdf"
 }
 
