@@ -1,4 +1,4 @@
 #!/bin/sh
 
-terraform output kubeconfig > kubeconfig.yml
+terraform output -raw kubeconfig > kubeconfig.yml
 KUBECONFIG=kubeconfig.yml kubectl $@
