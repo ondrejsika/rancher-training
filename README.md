@@ -45,6 +45,37 @@ terraform apply -auto-approve
 
 ## Rancher
 
+## Install Single Node Rancher using Docker
+
+- <https://rancher.com/docs/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/>
+- <https://rancher.com/docs/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#option-d-let-s-encrypt-certificate>
+
+```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  --privileged \
+  --name rancher \
+  rancher/rancher:latest \
+  --acme-domain <rancher_domain>
+```
+
+Example
+
+```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  --privileged \
+  --name rancher \
+  rancher/rancher:latest \
+  --acme-domain rancher.sikademo.com
+```
+
+Get bootstrap password:
+
+```
+docker logs rancher  2>&1 | grep "Bootstrap Password:"
+```
+
 ## Install Rancher
 
 ```
