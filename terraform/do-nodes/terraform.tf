@@ -39,7 +39,20 @@ resource "digitalocean_droplet" "node" {
   ssh_keys = [
     data.digitalocean_ssh_key.default.id
   ]
-  tags = ["bm-node"]
+  tags      = ["bm-node"]
+  user_data = <<EOF
+#cloud-config
+ssh_pwauth: yes
+password: asdfasdf2020
+chpasswd:
+  expire: false
+runcmd:
+  - |
+    apt-get update
+    apt-get install -y curl sudo git
+    systemctl stop ufw
+    systemctl disable ufw
+EOF
 }
 
 resource "digitalocean_loadbalancer" "demo" {
