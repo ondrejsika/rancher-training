@@ -13,6 +13,7 @@
 
 # Kubernetes
 kubeconfig
+kubeconfig.yml
 
 # RKE
 cluster.yml
