@@ -23,13 +23,33 @@ data "digitalocean_domain" "default" {
 }
 
 resource "digitalocean_droplet" "rancher" {
-  image  = "rancheros"
+  image  = "docker-20-04"
   name   = "rancher"
   region = "fra1"
   size   = "s-4vcpu-8gb"
   ssh_keys = [
-    data.digitalocean_ssh_key.default.fingerprint
+    data.digitalocean_ssh_key.default.id
   ]
+  user_data = <<EOF
+#cloud-config
+ssh_pwauth: yes
+password: asdfasdf2020
+chpasswd:
+  expire: false
+runcmd:
+  - |
+    apt-get update
+    apt-get install -y curl sudo git
+    systemctl stop ufw
+    systemctl disable ufw
+    curl -fsSL https://ins.oxs.cz/slu-linux-amd64.sh | sudo sh
+    install-slu i -v v0.44.0-dev-1
+    slu install-bin-tool training-cli -v v0.5.0-dev-5
+    HOME=/root training-cli rancher vm-setup
+    docker pull -q rancher/rancher:latest
+    sleep 60
+    docker run --privileged --name rancher -d --restart=always -p 80:80 -p 443:443 -e CATTLE_BOOTSTRAP_PASSWORD=bootstrap rancher/rancher:latest --acme-domain rancher.${data.digitalocean_domain.default.name}
+EOF
 }
 
 resource "digitalocean_record" "rancher" {
@@ -37,27 +57,6 @@ resource "digitalocean_record" "rancher" {
   type   = "A"
   name   = digitalocean_droplet.rancher.name
   value  = digitalocean_droplet.rancher.ipv4_address
-}
-
-resource "null_resource" "cluster" {
-  triggers = {
-    record = digitalocean_record.rancher.fqdn
-  }
-
-  connection {
-    type = "ssh"
-    host = digitalocean_droplet.rancher.ipv4_address
-    user = "rancher"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sleep 60",
-      "docker pull -q rancher/rancher:latest",
-      // -e CATTLE_BOOTSTRAP_PASSWORD=bootstrap
-      "docker run --privileged --name rancher -d --restart=always -p 80:80 -p 443:443 rancher/rancher:latest --acme-domain ${digitalocean_record.rancher.fqdn}",
-    ]
-  }
 }
 
 output "rancher_domain" {
