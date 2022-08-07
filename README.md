@@ -2,9 +2,6 @@
 
 # Rancher Training
 
-    Ondrej Sika <ondrej@ondrejsika.com>
-    https://github.com/ondrejsika/rancher-training
-
 ## About Course
 
 - [Rancher training in Czech Republic](https://ondrej-sika.cz/skoleni/rancher)
