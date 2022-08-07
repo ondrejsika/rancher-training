@@ -52,7 +52,7 @@ resource "rancher2_node_template" "do-deb" {
 resource "rancher2_user" "root" {
   name     = "Root User"
   username = "root"
-  password = "root"
+  password = "asdfasdfasdf"
   enabled  = true
 }
 
@@ -65,7 +65,7 @@ resource "rancher2_global_role_binding" "root" {
 resource "rancher2_user" "foo" {
   name     = "Foo User"
   username = "foo"
-  password = "foo"
+  password = "asdfasdfasdf"
   enabled  = true
 }
 
@@ -78,7 +78,7 @@ resource "rancher2_global_role_binding" "foo" {
 resource "rancher2_user" "bar" {
   name     = "Bar User"
   username = "bar"
-  password = "bar"
+  password = "asdfasdfasdf"
   enabled  = true
 }
 

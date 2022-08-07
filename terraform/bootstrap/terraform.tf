@@ -20,7 +20,7 @@ resource "rancher2_bootstrap" "admin" {
   provider = rancher2.bootstrap
 
   initial_password = "bootstrap"
-  password         = "asdfasdf"
+  password         = "asdfasdfasdf"
 }
 
 output "rancher_api_url" {
