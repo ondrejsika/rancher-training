@@ -1,2 +1,2 @@
-do_token = "xxx"
+do_token    = "xxx"
 base_domain = "xxx"

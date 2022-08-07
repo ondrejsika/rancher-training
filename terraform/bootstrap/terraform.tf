@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     rancher2 = {
-      source = "rancher/rancher2"
+      source  = "rancher/rancher2"
       version = "1.21.0"
     }
   }
@@ -20,7 +20,7 @@ resource "rancher2_bootstrap" "admin" {
   provider = rancher2.bootstrap
 
   initial_password = "bootstrap"
-  password = "asdfasdf"
+  password         = "asdfasdf"
 }
 
 output "rancher_api_url" {
@@ -28,6 +28,6 @@ output "rancher_api_url" {
 }
 
 output "rancher_token_key" {
-  value = rancher2_bootstrap.admin.token
+  value     = rancher2_bootstrap.admin.token
   sensitive = true
 }

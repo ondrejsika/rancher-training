@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     rancher2 = {
-      source = "rancher/rancher2"
+      source  = "rancher/rancher2"
       version = "1.21.0"
     }
   }
@@ -11,7 +11,7 @@ variable "rancher_api_url" {}
 variable "rancher_token_key" {}
 
 provider "rancher2" {
-  api_url = var.rancher_api_url
+  api_url   = var.rancher_api_url
   token_key = var.rancher_token_key
 }
 
@@ -20,7 +20,7 @@ data "rancher2_node_template" "do-deb" {
 }
 
 resource "rancher2_cluster" "deb" {
-  name = "terraform-deb"
+  name        = "terraform-deb"
   description = "Debian cluster created using Terraform"
   rke_config {
     network {
@@ -33,12 +33,12 @@ resource "rancher2_cluster" "deb" {
 }
 
 resource "rancher2_node_pool" "deb" {
-  cluster_id =  rancher2_cluster.deb.id
-  name = "deb"
-  hostname_prefix =  "deb"
+  cluster_id       = rancher2_cluster.deb.id
+  name             = "deb"
+  hostname_prefix  = "deb"
   node_template_id = data.rancher2_node_template.do-deb.id
-  quantity = 1
-  control_plane = true
-  etcd = true
-  worker = true
+  quantity         = 1
+  control_plane    = true
+  etcd             = true
+  worker           = true
 }

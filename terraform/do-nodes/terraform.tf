@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     digitalocean = {
-      source = "digitalocean/digitalocean"
+      source  = "digitalocean/digitalocean"
       version = "2.16.0"
     }
   }
@@ -43,42 +43,42 @@ resource "digitalocean_droplet" "node" {
 }
 
 resource "digitalocean_loadbalancer" "demo" {
-  name = "bm-demo"
+  name   = "bm-demo"
   region = "fra1"
 
   droplet_tag = "bm-node"
 
   healthcheck {
-    port = 30001
+    port     = 30001
     protocol = "tcp"
   }
 
   forwarding_rule {
-    entry_port  = 80
-    target_port = 30001
-    entry_protocol = "tcp"
+    entry_port      = 80
+    target_port     = 30001
+    entry_protocol  = "tcp"
     target_protocol = "tcp"
   }
 
   forwarding_rule {
-    entry_port  = 443
-    target_port = 30002
-    entry_protocol = "tcp"
+    entry_port      = 443
+    target_port     = 30002
+    entry_protocol  = "tcp"
     target_protocol = "tcp"
   }
 
   forwarding_rule {
-    entry_port  = 8080
-    target_port = 30003
-    entry_protocol = "tcp"
+    entry_port      = 8080
+    target_port     = 30003
+    entry_protocol  = "tcp"
     target_protocol = "tcp"
   }
 }
 
 output "node_ips" {
   value = [
-    for node in digitalocean_droplet.node:
-      node.ipv4_address
+    for node in digitalocean_droplet.node :
+    node.ipv4_address
   ]
 }
 

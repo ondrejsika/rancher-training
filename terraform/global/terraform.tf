@@ -1,11 +1,11 @@
 terraform {
   required_providers {
     digitalocean = {
-      source = "digitalocean/digitalocean"
+      source  = "digitalocean/digitalocean"
       version = "2.16.0"
     }
     rancher2 = {
-      source = "rancher/rancher2"
+      source  = "rancher/rancher2"
       version = "1.21.0"
     }
   }
@@ -20,78 +20,78 @@ provider "digitalocean" {
 }
 
 provider "rancher2" {
-  api_url = var.rancher_api_url
+  api_url   = var.rancher_api_url
   token_key = var.rancher_token_key
 }
 
 # === Cloud Credentials ===
 
 resource "rancher2_cloud_credential" "do" {
-  name = "do"
+  name        = "do"
   description = "do"
   digitalocean_credential_config {
-    access_token  = var.do_token
+    access_token = var.do_token
   }
 }
 
 # === Node Templates ===
 
 resource "rancher2_node_template" "do-deb" {
-  name = "do-deb"
-  description = "Debian @ DO"
+  name                = "do-deb"
+  description         = "Debian @ DO"
   cloud_credential_id = rancher2_cloud_credential.do.id
   digitalocean_config {
-    image = "debian-9-x64"
+    image  = "debian-9-x64"
     region = "fra1"
-    size = "s-2vcpu-4gb"
+    size   = "s-2vcpu-4gb"
   }
 }
 
 # === Users ===
 
 resource "rancher2_user" "root" {
-  name = "Root User"
+  name     = "Root User"
   username = "root"
   password = "root"
-  enabled = true
+  enabled  = true
 }
 
 resource "rancher2_global_role_binding" "root" {
-  name = "root"
+  name           = "root"
   global_role_id = "admin"
-  user_id = rancher2_user.root.id
+  user_id        = rancher2_user.root.id
 }
 
 resource "rancher2_user" "foo" {
-  name = "Foo User"
+  name     = "Foo User"
   username = "foo"
   password = "foo"
-  enabled = true
+  enabled  = true
 }
 
 resource "rancher2_global_role_binding" "foo" {
-  name = "foo"
+  name           = "foo"
   global_role_id = "user"
-  user_id = rancher2_user.foo.id
+  user_id        = rancher2_user.foo.id
 }
 
 resource "rancher2_user" "bar" {
-  name = "Bar User"
+  name     = "Bar User"
   username = "bar"
   password = "bar"
-  enabled = true
+  enabled  = true
 }
 
 resource "rancher2_global_role_binding" "bar" {
-  name = "bar"
+  name           = "bar"
   global_role_id = "user"
-  user_id = rancher2_user.bar.id
+  user_id        = rancher2_user.bar.id
 }
 
 # === Cluster Templates ===
 
 resource "rancher2_cluster_template" "default" {
-  name = "default"
+  name        = "default"
   description = "Default template without ingress"
   // members {
   //   access_type = "owner"
@@ -117,5 +117,5 @@ resource "rancher2_cluster_template" "default" {
 
 resource "rancher2_catalog" "sikalabs" {
   name = "sikalabs"
-  url = "https://helm.sikalabs.io"
+  url  = "https://helm.sikalabs.io"
 }

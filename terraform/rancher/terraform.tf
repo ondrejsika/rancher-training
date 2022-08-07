@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     digitalocean = {
-      source = "digitalocean/digitalocean"
+      source  = "digitalocean/digitalocean"
       version = "2.16.0"
     }
   }
@@ -23,10 +23,10 @@ data "digitalocean_domain" "default" {
 }
 
 resource "digitalocean_droplet" "rancher" {
-  image    = "rancheros"
-  name     = "rancher"
-  region   = "fra1"
-  size     = "s-4vcpu-8gb"
+  image  = "rancheros"
+  name   = "rancher"
+  region = "fra1"
+  size   = "s-4vcpu-8gb"
   ssh_keys = [
     data.digitalocean_ssh_key.default.fingerprint
   ]
