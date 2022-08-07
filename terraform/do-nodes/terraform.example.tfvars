@@ -1,1 +1,1 @@
-do_token = "xxx"
+digitalocean_token = "xxx"

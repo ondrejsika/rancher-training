@@ -6,7 +6,7 @@ terraform {
     }
   }
 }
-variable "do_token" {}
+variable "digitalocean_token" {}
 
 variable "node_count" {
   default = 3
@@ -21,7 +21,7 @@ variable "ssh_key_name" {
 }
 
 provider "digitalocean" {
-  token = var.do_token
+  token = var.digitalocean_token
 }
 
 data "digitalocean_ssh_key" "default" {

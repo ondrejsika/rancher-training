@@ -7,10 +7,10 @@ terraform {
   }
 }
 
-variable "do_token" {}
+variable "digitalocean_token" {}
 
 provider "digitalocean" {
-  token = var.do_token
+  token = var.digitalocean_token
 }
 
 resource "digitalocean_kubernetes_cluster" "demo" {

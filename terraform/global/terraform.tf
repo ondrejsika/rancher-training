@@ -11,12 +11,12 @@ terraform {
   }
 }
 
-variable "do_token" {}
+variable "digitalocean_token" {}
 variable "rancher_api_url" {}
 variable "rancher_token_key" {}
 
 provider "digitalocean" {
-  token = var.do_token
+  token = var.digitalocean_token
 }
 
 provider "rancher2" {
@@ -30,7 +30,7 @@ resource "rancher2_cloud_credential" "do" {
   name        = "do"
   description = "do"
   digitalocean_credential_config {
-    access_token = var.do_token
+    access_token = var.digitalocean_token
   }
 }
 
