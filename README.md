@@ -297,18 +297,38 @@ rancher namespace new <project_name>-<suffix>
 ```
 
 
-## RKE
+## RKE2
 
-You can provision cluster without Rancher just using RKE tool.
+## Manual RKE2 Provisioning
+
+- <https://docs.rke2.io/install/quickstart/>
+- <https://docs.rke2.io/install/ha/>
 
 ```
-cd rke
+cd terraform/rke2-manual
 terraform init
 terraform apply -auto-approve
-cp cluster.example.yml cluster.yml
-./set-ips.sh
-rke up
-./kubectl.sh get no
+```
+
+Check Kubernetes
+
+```
+/var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
+```
+
+## Automatic (Cloud Init) RKE2 Provisioning
+
+```
+cd terraform/rke2-auto
+terraform init
+terraform apply -auto-approve
+```
+
+
+Check Kubernetes
+
+```
+/var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
 ```
 
 ## Thank you! & Questions?
