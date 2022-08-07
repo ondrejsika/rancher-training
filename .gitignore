@@ -1,6 +1,9 @@
 .DS_Store
 *.backup
 
+# Editor
+.vscode
+
 # Terraform
 .terraform
 *.tfstate*
