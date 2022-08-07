@@ -49,6 +49,7 @@ terraform apply -auto-approve
 
 - <https://rancher.com/docs/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/>
 - <https://rancher.com/docs/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#option-d-let-s-encrypt-certificate>
+- <https://rancher.com/docs/rancher/v2.6/en/installation/resources/bootstrap-password/>
 
 ```
 docker run -d --restart=unless-stopped \
