@@ -43,7 +43,6 @@ runcmd:
     systemctl stop ufw
     systemctl disable ufw
     curl -fsSL https://ins.oxs.cz/slu-linux-amd64.sh | sudo sh
-    install-slu i -v v0.44.0-dev-1
     slu install-bin-tool training-cli -v v0.5.0-dev-5
     HOME=/root training-cli rancher vm-setup
     docker pull -q rancher/rancher:latest
