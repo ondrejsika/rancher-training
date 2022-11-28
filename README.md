@@ -33,6 +33,38 @@
   - Create Cluster
   - Update Cluster
 
+## Set Environment Variables for Terraform
+
+Unix
+
+```sh
+export TF_VAR_digitalocean_token=do_token_xxx
+export TF_VAR_base_domain=do0.sikademo.com
+```
+
+```sh
+export TF_VAR_rancher_api_url=https://rancher.do0.sikademo.com
+```
+
+```sh
+export TF_VAR_rancher_token_key=token-xxx:xxx
+```
+
+PowerShell
+
+```powershell
+$Env.TF_VAR_digitalocean_token = "do_token_xxx"
+$Env.TF_VAR_base_domain = "do0.sikademo.com"
+```
+
+```powershell
+$Env.TF_VAR_rancher_api_url = "https://rancher.do0.sikademo.com"
+```
+
+```powershell
+$Env.TF_VAR_rancher_token_key = "token-xxx:xxx"
+```
+
 ## Prepare DigitalOcean Account
 
 Add SSH key & base domain
