@@ -11,6 +11,9 @@
 *.tfplan
 !*.example.tfvars
 
+# Infracost
+.infracost
+
 # Kubernetes
 kubeconfig
 kubeconfig.yml
