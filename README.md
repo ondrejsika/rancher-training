@@ -125,6 +125,12 @@ terraform init
 terraform apply -auto-approve
 ```
 
+Get token
+
+```
+terraform output rancher_token_key
+```
+
 ## Global Configuration
 
 Apply global configuration from Terraform
