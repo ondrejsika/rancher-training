@@ -41,7 +41,7 @@ resource "rancher2_node_template" "do-deb" {
   description         = "Debian @ DO"
   cloud_credential_id = rancher2_cloud_credential.do.id
   digitalocean_config {
-    image  = "debian-9-x64"
+    image  = "debian-11-x64"
     region = "fra1"
     size   = "s-2vcpu-4gb"
   }
