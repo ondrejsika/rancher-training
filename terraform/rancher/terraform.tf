@@ -42,7 +42,7 @@ runcmd:
     apt-get install -y curl sudo git
     systemctl stop ufw
     systemctl disable ufw
-    curl -fsSL https://ins.oxs.cz/slu-linux-amd64.sh | sudo sh
+    curl -fsSL https://raw.githubusercontent.com/sikalabs/slu/master/install.sh | sh
     slu install-bin-tool training-cli -v v0.5.0-dev-5
     HOME=/root training-cli rancher vm-setup
     docker pull -q rancher/rancher:latest
