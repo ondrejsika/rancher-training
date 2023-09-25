@@ -8,6 +8,7 @@ terraform {
 }
 
 variable "digitalocean_token" {}
+variable "base_domain" {}
 
 variable "node_count" {
   default = 3
@@ -27,6 +28,10 @@ provider "digitalocean" {
 
 data "digitalocean_ssh_key" "default" {
   name = var.ssh_key_name
+}
+
+data "digitalocean_domain" "default" {
+  name = var.base_domain
 }
 
 resource "digitalocean_droplet" "node" {
@@ -55,6 +60,15 @@ runcmd:
 EOF
 }
 
+resource "digitalocean_record" "node" {
+  count = var.node_count
+
+  domain = data.digitalocean_domain.default.name
+  type   = "A"
+  name   = "node${count.index}"
+  value  = digitalocean_droplet.node[count.index].ipv4_address
+}
+
 resource "digitalocean_loadbalancer" "demo" {
   name   = "bm-demo"
   region = "fra1"
@@ -62,27 +76,20 @@ resource "digitalocean_loadbalancer" "demo" {
   droplet_tag = "bm-node"
 
   healthcheck {
-    port     = 30001
+    port     = 80
     protocol = "tcp"
   }
 
   forwarding_rule {
     entry_port      = 80
-    target_port     = 30001
+    target_port     = 80
     entry_protocol  = "tcp"
     target_protocol = "tcp"
   }
 
   forwarding_rule {
     entry_port      = 443
-    target_port     = 30002
-    entry_protocol  = "tcp"
-    target_protocol = "tcp"
-  }
-
-  forwarding_rule {
-    entry_port      = 8080
-    target_port     = 30003
+    target_port     = 443
     entry_protocol  = "tcp"
     target_protocol = "tcp"
   }
@@ -97,4 +104,22 @@ output "node_ips" {
 
 output "lb_ip" {
   value = digitalocean_loadbalancer.demo.ip
+}
+
+resource "digitalocean_record" "k8s" {
+  domain = data.digitalocean_domain.default.name
+  type   = "A"
+  name   = "k8s"
+  value  = digitalocean_loadbalancer.demo.ip
+}
+
+resource "digitalocean_record" "k8s_wildcard" {
+  domain = data.digitalocean_domain.default.name
+  type   = "CNAME"
+  name   = "*.${digitalocean_record.k8s.name}"
+  value  = "${digitalocean_record.k8s.fqdn}."
+}
+
+output "k8s_base_domain" {
+  value = digitalocean_record.k8s.fqdn
 }
