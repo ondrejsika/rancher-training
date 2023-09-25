@@ -109,6 +109,34 @@ Get bootstrap password:
 docker logs rancher  2>&1 | grep "Bootstrap Password:"
 ```
 
+## Install Rancher to Kubernetes
+
+```
+helm upgrade --install \
+  rancher \
+  rancher --repo https://releases.rancher.com/server-charts/stable \
+  --namespace cattle-system --create-namespace \
+  --set hostname=<rancher_domain> \
+  --set ingress.tls.source=letsEncrypt \
+  --wait
+```
+
+```
+helm upgrade --install \
+  rancher \
+  rancher --repo https://releases.rancher.com/server-charts/stable \
+  --namespace cattle-system --create-namespace \
+  --set hostname=rancher.k8s.sikademo.com \
+  --set ingress.tls.source=letsEncrypt \
+  --wait
+```
+
+Get bootstrap password:
+
+```
+kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{ .data.bootstrapPassword|base64decode}}{{ "\n" }}'
+```
+
 ## Install Rancher
 
 ```
