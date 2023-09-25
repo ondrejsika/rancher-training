@@ -75,6 +75,39 @@ terraform init
 terraform apply -auto-approve
 ```
 
+## RKE2
+
+## Manual RKE2 Provisioning
+
+- <https://docs.rke2.io/install/quickstart/>
+- <https://docs.rke2.io/install/ha/>
+
+```
+cd terraform/rke2-manual
+terraform init
+terraform apply -auto-approve
+```
+
+Check Kubernetes
+
+```
+/var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
+```
+
+## Automatic (Cloud Init) RKE2 Provisioning
+
+```
+cd terraform/rke2-auto
+terraform init
+terraform apply -auto-approve
+```
+
+Check Kubernetes
+
+```
+/var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
+```
+
 ## Rancher
 
 ## Install Single Node Rancher using Docker
@@ -360,41 +393,6 @@ rancher namespace
 
 ```
 rancher namespace new <project_name>-<suffix>
-```
-
-
-## RKE2
-
-## Manual RKE2 Provisioning
-
-- <https://docs.rke2.io/install/quickstart/>
-- <https://docs.rke2.io/install/ha/>
-
-```
-cd terraform/rke2-manual
-terraform init
-terraform apply -auto-approve
-```
-
-Check Kubernetes
-
-```
-/var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
-```
-
-## Automatic (Cloud Init) RKE2 Provisioning
-
-```
-cd terraform/rke2-auto
-terraform init
-terraform apply -auto-approve
-```
-
-
-Check Kubernetes
-
-```
-/var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
 ```
 
 ## Thank you! & Questions?
