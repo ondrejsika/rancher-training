@@ -79,9 +79,9 @@ terraform apply -auto-approve
 
 ## Install Single Node Rancher using Docker
 
-- <https://rancher.com/docs/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/>
-- <https://rancher.com/docs/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#option-d-let-s-encrypt-certificate>
-- <https://rancher.com/docs/rancher/v2.6/en/installation/resources/bootstrap-password/>
+- <https://ranchermanager.docs.rancher.com/v2.7/pages-for-subheaders/rancher-on-a-single-node-with-docker>
+- <https://ranchermanager.docs.rancher.com/v2.7/pages-for-subheaders/rancher-on-a-single-node-with-docker#option-d-lets-encrypt-certificate>
+- <https://ranchermanager.docs.rancher.com/v2.7/getting-started/installation-and-upgrade/resources/bootstrap-password>
 
 ```
 docker run -d --restart=unless-stopped \
