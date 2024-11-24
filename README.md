@@ -15,6 +15,9 @@
 - Rancher Ecosystem
   - RKE2
   - Rancher
+- RKE2
+  - Create Cluster
+  - Update Cluster
 - Rancher & Terraform
 - Rancher
   - Install Rancher
@@ -29,9 +32,6 @@
     - Imported Cluster
   - Access Control
   - Rancher CLI
-- RKE2
-  - Create Cluster
-  - Update Cluster
 
 ## Set Environment Variables for Terraform
 
