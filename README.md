@@ -119,6 +119,22 @@ Check Kubernetes
 - Easy to install
 - Ideal for edge, IoT and single node clusters
 
+## Install k3s with Traefik Ingress Controller
+
+```
+ssh root@k3s0.sikademo.com
+```
+
+```
+curl -sfL https://get.k3s.io | sh -
+```
+
+Done
+
+```
+kubectl get no
+```
+
 ## Rancher
 
 ## Install Single Node Rancher using Docker
