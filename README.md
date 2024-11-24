@@ -110,6 +110,15 @@ Check Kubernetes
 /var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
 ```
 
+# k3s
+
+## What is k3s
+
+- Lightweight Kubernetes
+- Single binary
+- Easy to install
+- Ideal for edge, IoT and single node clusters
+
 ## Rancher
 
 ## Install Single Node Rancher using Docker
