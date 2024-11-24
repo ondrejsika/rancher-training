@@ -14,10 +14,12 @@
 
 - Rancher Ecosystem
   - RKE2
+  - k3s
   - Rancher
 - RKE2
   - Create Cluster
   - Update Cluster
+- k3s
 - Rancher & Terraform
 - Rancher
   - Install Rancher
