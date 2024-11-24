@@ -13,7 +13,7 @@
 ## Agenda
 
 - Rancher Ecosystem
-  - RKE
+  - RKE2
   - Rancher
 - Rancher & Terraform
 - Rancher
@@ -29,7 +29,7 @@
     - Imported Cluster
   - Access Control
   - Rancher CLI
-- RKE
+- RKE2
   - Create Cluster
   - Update Cluster
 
