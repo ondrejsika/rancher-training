@@ -1,6 +1,6 @@
 [Ondrej Sika (sika.io)](https://sika.io) | <ondrej@sika.io> | [go to course ->](#course)
 
-# Rancher Training
+# RKE2 and Rancher Training
 
 ## About Course
 
