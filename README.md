@@ -135,6 +135,82 @@ Done
 kubectl get no
 ```
 
+## Install k3s with Nginx Ingress Controller
+
+```
+ssh root@k3s0.sikademo.com
+```
+
+Install k3s without Traefik (from CLI)
+
+```
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik" sh -
+```
+
+Cluster is ready. There is no Ingress Controller installed.
+
+```
+kubectl get no
+```
+
+Install Helm (here example using [slu](https://github.com/sikalabs/slu))
+
+```
+slu install-bin helm
+```
+
+Install Nginx Ingress Controller
+
+```
+helm upgrade --install \
+  ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --create-namespace \
+  --namespace ingress-nginx \
+  --set controller.service.type=ClusterIP \
+  --set controller.ingressClassResource.default=true \
+  --set controller.kind=DaemonSet \
+  --set controller.hostPort.enabled=true \
+  --set controller.metrics.enabled=true \
+  --set controller.config.use-proxy-protocol=false \
+  --wait
+```
+
+Install cert-manager
+
+```
+helm upgrade --install \
+  cert-manager cert-manager \
+  --repo https://charts.jetstack.io \
+  --create-namespace \
+  --namespace cert-manager \
+  --set crds.enabled=true \
+  --wait
+```
+
+Install ClusterIssuer
+
+```
+kubectl apply -f https://raw.githubusercontent.com/ondrejsika/kubernetes-training/refs/heads/master/clusterissuer-letsencrypt.yml
+```
+
+Done. See Ingress class
+
+```
+kubectl get ingressclass
+```
+
+And try:
+
+```
+helm upgrade --install \
+  hello-world hello-world \
+  --repo https://helm.sikalabs.io \
+  --set host=hello.k3s1.sikademo.com \
+  --set TEXT="Hello from k3s" \
+  --wait
+```
+
 ## Rancher
 
 ## Install Single Node Rancher using Docker
