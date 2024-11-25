@@ -90,10 +90,38 @@ terraform init
 terraform apply -auto-approve
 ```
 
+Install RKE2
+
+```
+curl -sfL https://get.rke2.io | sh -
+```
+
+Start RKE2 server (master node)
+
+```
+systemctl enable rke2-server.service --now
+```
+
 Check Kubernetes
 
 ```
 /var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
+```
+
+or make it easier
+
+```
+mkdir -p ~/.kube
+ln -sf /etc/rancher/rke2/rke2.yaml ~/.kube/config
+ln -sf /var/lib/rancher/rke2/bin/kubectl /usr/local/bin/kubectl
+```
+
+```
+ln -sf /var/lib/rancher/rke2/bin/kubectl /usr/local/bin/k
+```
+
+```
+kubectl get no
 ```
 
 ## Automatic (Cloud Init) RKE2 Provisioning
