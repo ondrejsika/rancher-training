@@ -257,6 +257,19 @@ helm upgrade --install \
   --wait
 ```
 
+## k3s management
+
+Config is on `/etc/rancher/k3s/config.yaml`
+
+- https://docs.k3s.io/cli/server
+- https://docs.k3s.io/installation/configuration
+
+Reconfigure k3s using service restart
+
+```
+systemctl restart k3s
+```
+
 ## Rancher
 
 ## Install Single Node Rancher using Docker
