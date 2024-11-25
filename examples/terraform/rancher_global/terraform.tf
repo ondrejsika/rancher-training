@@ -90,29 +90,6 @@ resource "rancher2_global_role_binding" "bar" {
 
 # === Cluster Templates ===
 
-resource "rancher2_cluster_template" "default" {
-  name        = "default"
-  description = "Default template without ingress"
-  // members {
-  //   access_type = "owner"
-  //   user_principal_id = "local://user-XXXXX"
-  // }
-  template_revisions {
-    name = "v1"
-    cluster_config {
-      rke_config {
-        network {
-          plugin = "canal"
-        }
-        ingress {
-          provider = "none"
-        }
-      }
-    }
-    default = true
-  }
-}
-
 # === Catalogs ===
 
 resource "rancher2_catalog" "sikalabs" {
