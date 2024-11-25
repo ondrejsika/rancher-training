@@ -117,6 +117,7 @@ Check Kubernetes
 - Lightweight Kubernetes
 - Single binary
 - Easy to install
+- With Storage
 - Ideal for edge, IoT and single node clusters
 
 ## Install k3s with Traefik Ingress Controller
