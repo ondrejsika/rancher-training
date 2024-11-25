@@ -265,7 +265,7 @@ helm upgrade --install \
 Install ClusterIssuer
 
 ```
-https://raw.githubusercontent.com/ondrejsika/rancher-training/refs/heads/master/examples/clusterissuer_nginx.yml
+kubectl apply -f https://raw.githubusercontent.com/ondrejsika/rancher-training/refs/heads/master/examples/clusterissuer_nginx.yml
 ```
 
 Done. See Ingress class
