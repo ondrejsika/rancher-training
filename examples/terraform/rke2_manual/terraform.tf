@@ -24,7 +24,7 @@ data "digitalocean_ssh_key" "default" {
 resource "digitalocean_droplet" "master" {
   count = 3
 
-  image  = "debian-11-x64"
+  image  = "debian-12-x64"
   name   = "rke2-manual-ma-${count.index}"
   region = "fra1"
   size   = "s-2vcpu-2gb"
@@ -50,7 +50,7 @@ EOF
 resource "digitalocean_droplet" "worker" {
   count = 2
 
-  image  = "debian-11-x64"
+  image  = "debian-12-x64"
   name   = "rke2-manual-wo-${count.index}"
   region = "fra1"
   size   = "s-2vcpu-2gb"

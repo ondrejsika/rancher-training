@@ -14,7 +14,7 @@ variable "node_count" {
 }
 
 variable "node_image" {
-  default = "debian-11-x64"
+  default = "debian-12-x64"
 }
 
 variable "ssh_key_name" {
