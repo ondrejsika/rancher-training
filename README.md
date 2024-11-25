@@ -110,7 +110,7 @@ Check Kubernetes
 /var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get nodes
 ```
 
-# k3s
+## k3s
 
 ## What is k3s
 
