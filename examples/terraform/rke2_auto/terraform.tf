@@ -26,7 +26,7 @@ resource "digitalocean_droplet" "master0" {
   image     = "debian-12-x64"
   name      = "rke2-auto-ma-0"
   region    = "fra1"
-  size      = "s-2vcpu-2gb"
+  size      = "s-2vcpu-4gb"
   ssh_keys  = local.ssh_keys
   tags      = ["rke2-auto", "rke2-auto-ma"]
   user_data = <<EOF
@@ -61,7 +61,7 @@ resource "digitalocean_droplet" "master" {
   image     = "debian-12-x64"
   name      = "rke2-auto-ma-${count.index + 1}"
   region    = "fra1"
-  size      = "s-2vcpu-2gb"
+  size      = "s-2vcpu-4gb"
   ssh_keys  = local.ssh_keys
   tags      = ["rke2-auto", "rke2-auto-ma"]
   user_data = <<EOF
