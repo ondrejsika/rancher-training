@@ -127,7 +127,7 @@ kubectl get no
 ## Automatic (Cloud Init) RKE2 Provisioning
 
 ```
-cd terraform/rke2-auto
+cd examples/terraform/rke2_auto
 terraform init
 terraform apply -auto-approve
 ```
