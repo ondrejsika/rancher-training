@@ -135,6 +135,51 @@ Done
 kubectl get no
 ```
 
+Install Helm (here example using [slu](https://github.com/sikalabs/slu))
+
+```
+slu install-bin helm
+```
+
+Create `~/.kube/config`
+
+```
+mkdir -p ~/.kube
+ln -sf /etc/rancher/k3s/k3s.yaml ~/.kube/config
+```
+
+Install Cert Manager
+
+```
+helm upgrade --install \
+  cert-manager cert-manager \
+  --repo https://charts.jetstack.io \
+  --create-namespace \
+  --namespace cert-manager \
+  --set crds.enabled=true \
+  --wait
+```
+
+Install ClusterIssuer
+
+```
+kubectl apply -f https://raw.githubusercontent.com/ondrejsika/rancher-training/refs/heads/master/examples/clusterissuer_traefik.yml
+```
+
+Done. See example
+
+```
+helm upgrade --install \
+  hello-world hello-world \
+  --repo https://helm.sikalabs.io \
+  --set host=hello.k3s0.sikademo.com \
+  --set TEXT="Hello from k3s / k3s0" \
+  --set ingressClassName=traefik \
+  --wait
+```
+
+See: http://hello.k3s0.sikademo.com
+
 ## Install k3s with Nginx Ingress Controller
 
 ```
