@@ -25,7 +25,7 @@ locals {
 
 resource "digitalocean_droplet" "main" {
   image     = "debian-12-x64"
-  name      = "k3s-auto"
+  name      = "k3s-manual"
   region    = "fra1"
   size      = "s-2vcpu-2gb"
   ssh_keys  = local.ssh_keys
