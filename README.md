@@ -85,7 +85,7 @@ terraform apply -auto-approve
 - <https://docs.rke2.io/install/ha/>
 
 ```
-cd terraform/rke2-manual
+cd examples/terraform/rke2_manual
 terraform init
 terraform apply -auto-approve
 ```
