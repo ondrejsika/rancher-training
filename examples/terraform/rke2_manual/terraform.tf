@@ -40,6 +40,7 @@ runcmd:
   - |
     apt-get update
     apt-get install -y curl sudo git open-iscsi nfs-client
+    curl -fsSL https://raw.githubusercontent.com/sikalabs/slu/master/install.sh | sudo sh
     systemctl stop ufw
     systemctl disable ufw
 EOF
@@ -64,6 +65,7 @@ runcmd:
   - |
     apt-get update
     apt-get install -y curl sudo git open-iscsi nfs-client
+    curl -fsSL https://raw.githubusercontent.com/sikalabs/slu/master/install.sh | sudo sh
     systemctl stop ufw
     systemctl disable ufw
 EOF
