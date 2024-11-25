@@ -39,7 +39,7 @@ chpasswd:
 runcmd:
   - |
     apt-get update
-    apt-get install -y curl sudo git
+    apt-get install -y curl sudo git open-iscsi nfs-client
     systemctl stop ufw
     systemctl disable ufw
 EOF
@@ -63,7 +63,7 @@ chpasswd:
 runcmd:
   - |
     apt-get update
-    apt-get install -y curl sudo git
+    apt-get install -y curl sudo git open-iscsi nfs-client
     systemctl stop ufw
     systemctl disable ufw
 EOF
