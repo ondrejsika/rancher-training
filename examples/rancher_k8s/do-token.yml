@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: do-token
+  namespace: cattle-global-data
+type: Opaque
+stringData:
+  digitaloceancredentialConfig-accessToken: xxx # CHANGE ME

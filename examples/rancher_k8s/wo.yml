@@ -1,0 +1,8 @@
+apiVersion: rke-machine-config.cattle.io/v1
+kind: DigitaloceanConfig
+metadata:
+  name: wo
+  namespace: fleet-default
+region: fra1
+size: s-2vcpu-4gb
+image: debian-12-x64
