@@ -1,9 +1,5 @@
 terraform {
   required_providers {
-    digitalocean = {
-      source  = "digitalocean/digitalocean"
-      version = "2.16.0"
-    }
     rancher2 = {
       source  = "rancher/rancher2"
       version = "5.1.0"
@@ -28,8 +24,17 @@ resource "rancher2_cloud_credential" "do" {
   }
 }
 
-resource "rancher2_machine_config_v2" "do" {
-  generate_name = "do-"
+resource "rancher2_machine_config_v2" "ma" {
+  generate_name = "ma-"
+  digitalocean_config {
+    image  = "debian-12-x64"
+    region = "fra1"
+    size   = "s-2vcpu-4gb"
+  }
+}
+
+resource "rancher2_machine_config_v2" "wo" {
+  generate_name = "wo-"
   digitalocean_config {
     image  = "debian-12-x64"
     region = "fra1"
@@ -38,7 +43,7 @@ resource "rancher2_machine_config_v2" "do" {
 }
 
 resource "rancher2_cluster_v2" "tf01" {
-  name                  = "tf01"
+  name                  = "tf02"
   kubernetes_version    = "v1.30.6+rke2r1"
   enable_network_policy = false
   rke_config {
@@ -50,8 +55,8 @@ resource "rancher2_cluster_v2" "tf01" {
       worker_role                  = false
       quantity                     = 1
       machine_config {
-        kind = rancher2_machine_config_v2.do.kind
-        name = rancher2_machine_config_v2.do.name
+        kind = rancher2_machine_config_v2.ma.kind
+        name = rancher2_machine_config_v2.ma.name
       }
     }
     machine_pools {
@@ -62,8 +67,8 @@ resource "rancher2_cluster_v2" "tf01" {
       worker_role                  = true
       quantity                     = 2
       machine_config {
-        kind = rancher2_machine_config_v2.do.kind
-        name = rancher2_machine_config_v2.do.name
+        kind = rancher2_machine_config_v2.wo.kind
+        name = rancher2_machine_config_v2.wo.name
       }
     }
   }
